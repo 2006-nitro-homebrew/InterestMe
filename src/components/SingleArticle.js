@@ -1,7 +1,16 @@
 import React from "react";
-import ReactDOM from "react-dom";
-import db from "../../db/index";
+// import { db } from "../db/index";
 
 export default class SingleArticle extends React.Component {
-  constructor() {}
+  constructor() {
+    super();
+  }
+
+  render() {
+    return (
+      <div>
+        <h1>SINGLE ARTICLE</h1>
+      </div>
+    );
+  }
 }

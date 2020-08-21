@@ -5,6 +5,7 @@ import { withRouter, Route, Switch } from "react-router-dom";
 import { Login, Signup, InterestMe } from "./components";
 import ReadingList from "./components/ReadingList";
 
+
 export default class Routes extends React.Component {
   render() {
     // const { isLoggedIn } = this.props;
@@ -15,6 +16,9 @@ export default class Routes extends React.Component {
         {/* Routes placed here are available to all visitors */}
         <Route path="/login" component={Login} />
         <Route path="/readinglist" component={ReadingList} />
+
+       {/* <Route path="/singlearticle" component={SingleArticle} /> */}
+
         {/* <Route path="/signup" component={Signup} /> */}
         {isLoggedIn && (
           <Switch>
@@ -22,6 +26,7 @@ export default class Routes extends React.Component {
             {/* <Route path="/home" component={InterestMe} /> */}
           </Switch>
         )}
+
         {/* Displays our Login component as a fallback */}
         {/* <Route component={Login} /> */}
       </Switch>
