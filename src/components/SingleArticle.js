@@ -1,5 +1,5 @@
 import React from "react";
-import { db } from "../db/index";
+// import { db } from "../db/index";
 
 export default class SingleArticle extends React.Component {
   constructor() {
