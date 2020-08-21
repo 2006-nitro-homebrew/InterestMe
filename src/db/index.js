@@ -1,19 +1,20 @@
-import firebase from 'firebase';
-import '@firebase/firestore';
-require('../secrets');
+import firebase from "firebase";
+import "@firebase/firestore";
+require("../secrets");
 
 const firebaseConfig = {
-    apiKey: process.env.APIKEY,
-    authDomain: process.env.AUTHDOMAIN ,
-    databaseURL: process.env.DATABASEURL,
-    projectId: process.env.PROJECTID ,
-    storageBucket: process.env.STORAGEBUCKET,
-    messagingSenderId: process.env.MESSAGINGSENDERID,
-    appId: process.env.APPID ,
-    measurementId: process.env.MEASUREMENTID,
-  }
+  apiKey: process.env.APIKEY,
+  authDomain: process.env.AUTHDOMAIN,
+  databaseURL: process.env.DATABASEURL,
+  projectId: process.env.PROJECTID,
+  storageBucket: process.env.STORAGEBUCKET,
+  messagingSenderId: process.env.MESSAGINGSENDERID,
+  appId: process.env.APPID,
+  measurementId: process.env.MEASUREMENTID,
+};
 
 firebase.initializeApp(firebaseConfig);
 let db = firebase.firestore();
 
+console.log(firebaseConfig);
 export default db;
