@@ -8,7 +8,6 @@ function Navbar() {
       <AppBar position = 'sticky'>
         <Toolbar>
           <IconButton color='inherit' edge='start' aria-label='menu'>
-
           <Button color='inherit' >
             Home
           </Button>
@@ -22,6 +21,9 @@ function Navbar() {
           </Button>
           <Button  color='inherit'>
             Profile
+          </Button>
+          <Button  color='inherit'>
+            Login
           </Button>
           </div>
         </Toolbar>
