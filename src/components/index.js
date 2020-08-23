@@ -12,3 +12,4 @@ export { default as Profile } from "./Profile";
 export { default as ReadingList } from "./ReadingList";
 // export { default as SingleArticle } from "./SingleArticle";
 export {Login, Signup} from './Login'
+export { default as SingleArticle } from "./SingleArticle";

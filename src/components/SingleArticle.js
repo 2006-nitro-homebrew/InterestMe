@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import db from "../db/index";
 
+
 export default class SingleArticle extends React.Component {
   constructor() {
     super();
@@ -35,6 +36,7 @@ export default class SingleArticle extends React.Component {
           </div>
         ):<h1>No Article</h1>}
       </div >
+
     );
   }
 }

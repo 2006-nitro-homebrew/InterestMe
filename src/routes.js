@@ -6,6 +6,7 @@ import { Login, Signup, InterestMe } from "./components";
 import ReadingList from "./components/ReadingList";
 import SingleArticle from "./components/SingleArticle"
 
+
 export default class Routes extends React.Component {
   render() {
     // const { isLoggedIn } = this.props;
@@ -18,12 +19,14 @@ export default class Routes extends React.Component {
         <Route path="/signup" component={Signup} />
         <Route exact path="/readinglist" component={ReadingList} />
         <Route exact path="/readinglist/singlearticle" component={SingleArticle}/>
+
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
             {/* <Route path="/home" component={InterestMe} /> */}
           </Switch>
         )}
+
         {/* Displays our Login component as a fallback */}
         {/* <Route component={Login} /> */}
       </Switch>

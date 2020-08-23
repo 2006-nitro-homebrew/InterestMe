@@ -41,7 +41,14 @@
   }
 }
 
+
 #readinglist td, #readinglist th {
   border: 1px solid #ddd;
   padding: 8px;
 }
+
+.navButton {
+  display: flex;
+  justify-content: center;
+}
+
