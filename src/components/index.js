@@ -5,9 +5,10 @@
  */
 export { default as Navbar } from "./Navbar";
 export { default as Home } from "./Home";
-export { default as Login } from "./Login";
-export { default as Signup } from "./Signup";
+// export { default as Login } from "./Login";
+// export { default as Signup } from "./Login";
 export { default as InterestMe } from "./InterestMe";
 export { default as Profile } from "./Profile";
 export { default as ReadingList } from "./ReadingList";
 // export { default as SingleArticle } from "./SingleArticle";
+export {Login, Signup} from './Login'
