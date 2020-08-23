@@ -9,6 +9,16 @@ import Routes from "./routes";
 
 function App() {
   return (
+
+//     <div className="App">
+//       <div className = "Navbar"><Navbar /></div>
+//       <header className="App-header">
+//         {/* Edit <code>src/App.js</code> and save to reload. */}
+//         <p> </p>
+//         <Routes />
+//       </header>
+//     </div>
+
     <MuiThemeProvider>
       <Navbar />
       <div className="App">
