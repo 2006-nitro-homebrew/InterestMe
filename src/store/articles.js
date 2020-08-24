@@ -16,9 +16,8 @@ export const getArticles = (articles) => {
 export const fetchArticles = () => {
   return async (dispatch) => {
     try {
-      //replace testuser with actual user id later
       await db
-        .collection("users/testuser/savedOffline")
+        .collection("users/testuser/savedOffline") //replace testuser with actual user id
         .onSnapshot((snapshot) => {
           const data = snapshot.docs.map((doc) => ({
             id: doc.id,

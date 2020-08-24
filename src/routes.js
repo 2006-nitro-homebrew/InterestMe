@@ -4,8 +4,7 @@ import { withRouter, Route, Switch } from "react-router-dom";
 // import PropTypes from "prop-types";
 import { Login, Signup, InterestMe } from "./components";
 import ReadingList from "./components/ReadingList";
-import SingleArticle from "./components/SingleArticle"
-
+import SingleArticle from "./components/SingleArticle";
 
 export default class Routes extends React.Component {
   render() {
@@ -18,7 +17,7 @@ export default class Routes extends React.Component {
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
         <Route exact path="/readinglist" component={ReadingList} />
-        <Route exact path="/readinglist/singlearticle" component={SingleArticle}/>
+        <Route exact path="/readinglist/:articleId" component={SingleArticle} />
 
         {isLoggedIn && (
           <Switch>

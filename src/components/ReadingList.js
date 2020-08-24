@@ -2,13 +2,11 @@ import React from "react";
 import db from "../db/index";
 import { connect } from "react-redux";
 import { fetchArticles } from "../store/articles";
+import { Link } from "react-router-dom";
 
 export class ReadingList extends React.Component {
   constructor() {
     super();
-    // this.state = {
-    //   list: {},
-    // };
   }
 
   async componentDidMount() {
@@ -47,7 +45,9 @@ export class ReadingList extends React.Component {
             {allList.length > 0 ? (
               allList.map((doc) => (
                 <tr key={doc.id}>
-                  <td>{doc.id}</td>
+                  <td>
+                    <Link to={`../readinglist/${doc.id}`}>{doc.id}</Link>
+                  </td>
                   <td>{doc.name}</td>
                   <td>{doc.source}</td>
                 </tr>
