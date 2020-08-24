@@ -1,7 +1,6 @@
-import firebase from 'firebase';
-import '@firebase/firestore';
-import {firebaseConfig} from '../secrets'
-
+import firebase from "firebase";
+import "@firebase/firestore";
+import { firebaseConfig } from "../secrets";
 
 firebase.initializeApp(firebaseConfig);
 let db = firebase.firestore();
