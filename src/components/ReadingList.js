@@ -1,5 +1,4 @@
 import React from "react";
-import db from "../db/index";
 import { connect } from "react-redux";
 import { fetchArticles } from "../store/articles";
 import { Link } from "react-router-dom";
@@ -11,13 +10,6 @@ export class ReadingList extends React.Component {
 
   async componentDidMount() {
     this.props.getArticles();
-    // db.collection("users/testuser/savedOffline").onSnapshot((snapshot) => {
-    //   const data = snapshot.docs.map((doc) => ({
-    //     id: doc.id,
-    //     ...doc.data(),
-    //   }));
-    //   this.setState({ list: data });
-    // });
   }
 
   renderTableHeader() {

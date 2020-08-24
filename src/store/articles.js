@@ -1,4 +1,3 @@
-import firebase from "firebase";
 import db from "../db/index";
 
 //Action types

@@ -1,6 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom";
-import db from "../db/index";
 import { connect } from "react-redux";
 import { fetchArticle } from "../store/singleArticle";
 
