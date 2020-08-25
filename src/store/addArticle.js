@@ -1,29 +1,32 @@
 import db from "../db/index";
 
 //Action types
-const GET_ARTICLE = "GET_ARTICLE";
+const ADD_ARTICLE = "ADD_ARTICLE";
 
 //Action creators
-export const getArticle = (article) => {
+export const addArticle = (article) => {
   return {
-    type: GET_ARTICLE,
+    type: ADD_ARTICLE,
     article,
   };
 };
 
 //Thunk creators
-
-export const fetchArticle = (uid,id) => {
-  return (dispatch) => {
+//For when user saves an article and adds into the database
+export const fetchAddArticle = (id) => {
+  return async (dispatch) => {
     try {
-      db.collection(`users/${uid}/savedOffline`) //replace testuser with actual user id
+      db.collection(`users/${id}/savedOffline`) //replace testuser with actual user id
         .doc(id)
-        .get()
+        .add({
+          content: [],
+          style: []
+        })
         .then((doc) => {
           if (!doc.exists) return;
           console.log("Document data: ", doc.data());
           let data = doc.data();
-          dispatch(getArticle(data));
+          dispatch(addArticle(data));
         });
     } catch (err) {
       console.error(err);
@@ -35,9 +38,10 @@ export const fetchArticle = (uid,id) => {
 const initialState = [];
 export default function (state = initialState, action) {
   switch (action.type) {
-    case GET_ARTICLE:
+    case ADD_ARTICLE:
       return action.article;
     default:
       return state;
   }
 }
+

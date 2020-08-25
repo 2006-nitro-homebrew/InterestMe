@@ -5,11 +5,12 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import user from "./user";
 import articles from "./articles";
 import article from "./singleArticle";
+import addArticle from './addArticle';
 import { loadState, saveState } from "./storage";
 
 const persistedState = loadState();
 
-const reducer = combineReducers({ user, articles, article }); //make sure to put individual reducers here
+const reducer = combineReducers({ user, articles, article, addArticle }); //make sure to put individual reducers here
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({ collapsed: true }))
 );

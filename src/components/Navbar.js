@@ -35,7 +35,7 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
   //     )}
   //   </nav>
   // </div>
-  
+
   <AppBar position="sticky">
     <Toolbar>
       <Link to={"/home"} style={{ textDecoration: "none", color: "#FFF" }}>
