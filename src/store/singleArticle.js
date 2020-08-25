@@ -13,7 +13,7 @@ export const getArticle = (article) => {
 
 //Thunk creators
 export const fetchArticle = (id) => {
-  return async (dispatch) => {
+  return (dispatch) => {
     try {
       db.collection("users/testuser/savedOffline") //replace testuser with actual user id
         .doc(id)
