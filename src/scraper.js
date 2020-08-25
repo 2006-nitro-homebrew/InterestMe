@@ -4,7 +4,6 @@ const axios = require("axios");
 
 const ARTICLE_URL =
   "http://books.toscrape.com/catalogue/a-light-in-the-attic_1000/index.html";
-// "https://www.cnn.com/2020/08/25/health/us-coronavirus-tuesday/index.html";
 
 async function scrapeAll(ARTICLE_URL) {
   async function scrapeContent(ARTICLE_URL) {
@@ -44,10 +43,11 @@ async function scrapeAll(ARTICLE_URL) {
   [extStyle, intStyle] = await scrapeStyle(ARTICLE_URL);
 
   let allStyles = intStyle.slice(); //copy over internal styles
-  extStyle.forEach(async (styleLink) => {
+
+  for (const styleLink of extStyle) {
     let { data: styling } = await axios.get(styleLink);
     allStyles.push(styling);
-  });
+  }
 
   return {
     content: await scrapeContent(ARTICLE_URL),
@@ -56,6 +56,3 @@ async function scrapeAll(ARTICLE_URL) {
 }
 // replace console.log with function to write it to database
 scrapeAll(ARTICLE_URL).then((result) => console.log(result));
-
-// scrapeContent(ARTICLE_URL).then((result) => console.log(result));
-// scrapeStyle(ARTICLE_URL).then((result) => console.log(result));
