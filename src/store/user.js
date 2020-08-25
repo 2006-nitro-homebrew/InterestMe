@@ -37,7 +37,7 @@ export const auth = (email, password, method) => async (dispatch) => {
                 if(!bool) return
                 uid = firebase.auth().currentUser.uid
                 firebase.firestore().collection("users").doc(uid).set({
-                    email
+                    email,uid
                 })
             })
             .catch( error => {

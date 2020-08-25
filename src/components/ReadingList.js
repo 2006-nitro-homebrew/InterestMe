@@ -2,14 +2,21 @@ import React from "react";
 import { connect } from "react-redux";
 import { fetchArticles } from "../store/articles";
 import { Link } from "react-router-dom";
+import firebase from 'firebase';
 
 export class ReadingList extends React.Component {
-  constructor() {
-    super();
-  }
+  // constructor() {
+  //   super();
+  // }
+
 
   async componentDidMount() {
-    this.props.getArticles();
+    firebase.auth().onAuthStateChanged((user) => {
+      if(user) {
+        this.props.getArticles(user.uid);
+      }
+      else {}
+    })
   }
 
   renderTableHeader() {
@@ -57,12 +64,13 @@ export class ReadingList extends React.Component {
 const mapState = (state) => {
   return {
     list: state.articles,
+    user: state.user
   };
 };
 
 const mapDispatch = (dispatch) => {
   return {
-    getArticles: () => dispatch(fetchArticles()),
+    getArticles: (uid) => dispatch(fetchArticles(uid)),
   };
 };
 

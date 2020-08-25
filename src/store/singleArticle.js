@@ -12,10 +12,11 @@ export const getArticle = (article) => {
 };
 
 //Thunk creators
-export const fetchArticle = (id) => {
+
+export const fetchArticle = (uid,id) => {
   return (dispatch) => {
     try {
-      db.collection("users/testuser/savedOffline") //replace testuser with actual user id
+      db.collection(`users/${uid}/savedOffline`) //replace testuser with actual user id
         .doc(id)
         .get()
         .then((doc) => {
