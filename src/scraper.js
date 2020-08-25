@@ -27,52 +27,31 @@ async function scrapeAll(ARTICLE_URL) {
 
       //query and save external styles (look for links that have rel='stylesheet' attribute)
       let external = document.querySelectorAll('link[rel="stylesheet"]');
-      for (let i = 0; i < external.length; i++) {
-        externalStyles.push(external[i].href);
-      }
+      external.forEach((element) => externalStyles.push(element.href));
 
       //query and save internal styles
       let internal = document.querySelectorAll("style");
-      for (let i = 0; i < internal.length; i++) {
-        internalStyles.push(internal[i].innerHTML);
-      }
+      internal.forEach((element) => internalStyles.push(element.innerHTML));
 
-      return [{ externalStyles }, { internalStyles }];
-
-      // if (externalStyles.length > 0) {
-      //   externalStyles.map(async (cssLink) => {
-      //     let { data: styling } = await axios.get(cssLink);
-      //     internalStyles.push(styling); //RUNS HERE
-      //     // console.log("INTERNAL STYLES", internalStyles);
-      //   });
-
-      // let newStyles = [];
-      // if (externalStyles.length > 0) {
-      //   newStyles = externalStyles.map(async (cssLink) => {
-      //     let { data: styling } = await axios.get(cssLink);
-      //     newStyles.push(styling);
-      //     // console.log(styling);
-      //     return styling;
-      //   });
-      //   console.log("STYLES", newStyles);
-      // }
-
-      //   let newStyles2 = newStyles.map(async (x) => {
-      //     return await x.then((y) => {
-      //       return y;
-      //     });
-      //   });
-      //   console.log("NEW STYLES 2", newStyles2);
-
-      //   return internalStyles.concat(newStyles);
+      return [externalStyles, internalStyles];
     } catch (err) {
       console.error(err);
     }
   }
 
+  //merge external and internal styles into one stylesheet
+  let extStyle, intStyle;
+  [extStyle, intStyle] = await scrapeStyle(ARTICLE_URL);
+
+  let allStyles = intStyle.slice(); //copy over internal styles
+  extStyle.forEach(async (styleLink) => {
+    let { data: styling } = await axios.get(styleLink);
+    allStyles.push(styling);
+  });
+
   return {
     content: await scrapeContent(ARTICLE_URL),
-    style: await scrapeStyle(ARTICLE_URL).then(),
+    styles: allStyles,
   };
 }
 // replace console.log with function to write it to database
