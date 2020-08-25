@@ -1,15 +1,22 @@
 import React from "react";
 import { connect } from "react-redux";
 import { fetchArticle } from "../store/singleArticle";
+import firebase from 'firebase';
 
 export class SingleArticle extends React.Component {
-  constructor() {
-    super();
-  }
+  // constructor() {
+  //   super();
+  // }
 
   async componentDidMount() {
     const articleId = this.props.match.params.articleId;
-    this.props.getArticle(articleId);
+    firebase.auth().onAuthStateChanged((user) => {
+      if(user) {
+        this.props.getArticle(user.uid,articleId);
+      }
+      else {}
+    })
+    
   }
 
   render() {
@@ -43,7 +50,7 @@ const mapState = (state) => {
 
 const mapDispatch = (dispatch) => {
   return {
-    getArticle: (id) => dispatch(fetchArticle(id)),
+    getArticle: (uid, id) => dispatch(fetchArticle(uid, id)),
   };
 };
 

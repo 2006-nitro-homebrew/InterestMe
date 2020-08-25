@@ -12,11 +12,12 @@ export const getArticles = (articles) => {
 };
 
 //Thunk creators
-export const fetchArticles = () => {
+export const fetchArticles = (uid) => {
   return async (dispatch) => {
     try {
+      console.log(uid)
       await db
-        .collection("users/testuser/savedOffline") //replace testuser with actual user id
+        .collection(`users/${uid}/savedOffline`) //replace testuser with actual user id
         .onSnapshot((snapshot) => {
           const data = snapshot.docs.map((doc) => ({
             id: doc.id,
