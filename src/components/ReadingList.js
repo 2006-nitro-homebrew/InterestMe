@@ -1,22 +1,25 @@
 import React from "react";
 import { connect } from "react-redux";
 import { fetchArticles } from "../store/articles";
+import { fetchAddArticle } from "../store/addArticle";
 import { Link } from "react-router-dom";
-import firebase from 'firebase';
+import firebase from "firebase";
 
 export class ReadingList extends React.Component {
   // constructor() {
   //   super();
   // }
 
-
   async componentDidMount() {
+    //TESTING ADD HERE*********************************************************
+    this.props.addArticle("testuser"); //TESTING SCRAPER *********************
+
     firebase.auth().onAuthStateChanged((user) => {
-      if(user) {
+      if (user) {
         this.props.getArticles(user.uid);
+      } else {
       }
-      else {}
-    })
+    });
   }
 
   renderTableHeader() {
@@ -64,13 +67,14 @@ export class ReadingList extends React.Component {
 const mapState = (state) => {
   return {
     list: state.articles,
-    user: state.user
+    user: state.user,
   };
 };
 
 const mapDispatch = (dispatch) => {
   return {
     getArticles: (uid) => dispatch(fetchArticles(uid)),
+    addArticle: (id) => dispatch(fetchAddArticle(id)),
   };
 };
 

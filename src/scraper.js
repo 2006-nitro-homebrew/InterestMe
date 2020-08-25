@@ -5,10 +5,12 @@ const axios = require("axios");
 const ARTICLE_URL =
   "http://books.toscrape.com/catalogue/a-light-in-the-attic_1000/index.html";
 
-async function scrapeAll(ARTICLE_URL) {
+export async function scrapeAll(ARTICLE_URL) {
   async function scrapeContent(ARTICLE_URL) {
     try {
-      const { data } = await axios.get(ARTICLE_URL);
+      const { data } = await axios.get(ARTICLE_URL, {
+        headers: { "Access-Control-Allow-Origin": "*" },
+      });
       const $ = cheerio.load(data);
       let article = $("body").html(); //use article tag for those that have it
       return article;
@@ -45,7 +47,9 @@ async function scrapeAll(ARTICLE_URL) {
   let allStyles = intStyle.slice(); //copy over internal styles
 
   for (const styleLink of extStyle) {
-    let { data: styling } = await axios.get(styleLink);
+    let { data: styling } = await axios.get(styleLink, {
+      headers: { "Access-Control-Allow-Origin": "*" },
+    });
     allStyles.push(styling);
   }
 
@@ -55,4 +59,4 @@ async function scrapeAll(ARTICLE_URL) {
   };
 }
 // replace console.log with function to write it to database
-scrapeAll(ARTICLE_URL).then((result) => console.log(result));
+// scrapeAll(ARTICLE_URL).then((result) => console.log(result));
